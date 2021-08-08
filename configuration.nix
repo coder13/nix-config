@@ -23,6 +23,13 @@
     extraOptions = "experimental-features = nix-command flakes ca-references";
   };
 
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.caleb = {
+    isNormalUser = true;
+    home = "/home/caleb";
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  };
+
   networking = {
     hostName = "grogu";
 
@@ -109,38 +116,14 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.caleb = {
-    isNormalUser = true;
-    home = "/home/caleb";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  };
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   nixpkgs.config.allowUnfree = true;
   environment = {
     systemPackages = with pkgs; [
       vim
-      tmux
       wget
       git
-      vscode
-      feh
-      xfce.thunar
-      xclip
-      rofi
-      firefox
-      discord-canary
-      google-chrome
-      flameshot
-      alacritty
-      neofetch
-      tdesktop
-      spotify
-      dunst
-      compton
-      element-desktop
       (writeShellScriptBin "nixFlakes" ''
         exec ${nixUnstable}/bin/nix --experimental-features "nix-command flakes" "$@"
       '')
