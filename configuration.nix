@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./i3.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -78,28 +79,28 @@
   environment.pathsToLink = [ "/libexec" ];
 
   services = {
-    xserver = {
-      enable = true;
+    # xserver = {
+    #   enable = true;
 
-      desktopManager = {
-        xterm.enable = false;
-      };
+    #   desktopManager = {
+    #     xterm.enable = false;
+    #   };
 
-      displayManager = {
-        defaultSession = "none+i3";
-      	sessionCommands = "${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap; xset r rate 200 32";
-      };
+    #   displayManager = {
+    #     defaultSession = "none+i3";
+    #   	sessionCommands = "${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap; xset r rate 200 32";
+    #   };
 
-      windowManager.i3 = {
-        enable = true;
-        extraPackages = with pkgs; [
-          dmenu #application launcher most people use
-          i3status # gives you the default i3 status bar
-          i3lock #default i3 screen locker
-          i3blocks #if you are planning on using i3blocks over i3status
-        ];
-      };
-    };
+    #   windowManager.i3 = {
+    #     enable = true;
+    #     extraPackages = with pkgs; [
+    #       dmenu #application launcher most people use
+    #       i3status # gives you the default i3 status bar
+    #       i3lock #default i3 screen locker
+    #       i3blocks #if you are planning on using i3blocks over i3status
+    #     ];
+    #   };
+    # };
     blueman.enable = true;
     pipewire = {
       enable = true;
@@ -156,6 +157,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
-
 }
 
