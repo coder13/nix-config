@@ -21,6 +21,7 @@
     htop
     firefox
     audacity
+    hack-font
   ];
 
   programs.home-manager = {
