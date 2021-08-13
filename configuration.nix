@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./i3.nix
+      ./ledger.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -28,7 +28,7 @@
   users.users.caleb = {
     isNormalUser = true;
     home = "/home/caleb";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "plugdev" ];
   };
 
   networking = {
@@ -79,28 +79,17 @@
   environment.pathsToLink = [ "/libexec" ];
 
   services = {
-    # xserver = {
-    #   enable = true;
+    xserver = {
+      enable = true;
 
-    #   desktopManager = {
-    #     xterm.enable = false;
-    #   };
-
-    #   displayManager = {
-    #     defaultSession = "none+i3";
-    #   	sessionCommands = "${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap; xset r rate 200 32";
-    #   };
-
-    #   windowManager.i3 = {
-    #     enable = true;
-    #     extraPackages = with pkgs; [
-    #       dmenu #application launcher most people use
-    #       i3status # gives you the default i3 status bar
-    #       i3lock #default i3 screen locker
-    #       i3blocks #if you are planning on using i3blocks over i3status
-    #     ];
-    #   };
-    # };
+      # displayManager = {
+      #   defaultSession = "none+i3";
+      #   lightdm = {
+      #     enable = true;
+      #   };
+      # };
+      windowManager.i3.enable = true;
+    };
     blueman.enable = true;
     pipewire = {
       enable = true;
@@ -133,16 +122,6 @@
       TERMINAL = "alacritty";
     };
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
