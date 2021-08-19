@@ -24,6 +24,8 @@
     extraOptions = "experimental-features = nix-command flakes ca-references";
   };
 
+  users.groups.plugdev = {};
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.caleb = {
     isNormalUser = true;

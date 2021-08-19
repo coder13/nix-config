@@ -10,17 +10,59 @@ in {
     windowManager.i3 = {
       enable = true;
       package = pkgs.i3-gaps;
+
       config = {
         modifier = mod;
-        gaps = { smartGaps = true; };
-        floating.modifier = mod;
+
+        gaps = {
+          smartGaps = true;
+          smartBorders = "no_gaps";
+        };
+
+        floating = {
+          modifier = mod;
+          border = 2;
+          criteria = [{
+            class = "Pavucontrol";
+          }];
+        };
+
         window.hideEdgeBorders = "smart";
         workspaceAutoBackAndForth = true;
+        focus.followMouse = false;
+
+        fonts = {
+          names = [ "monospace 8" ];
+          size = 8.0;
+        };
 
         startup = [
           { command = "exec flameshot"; }
           { command = "exec picom"; }
         ];
+
+        modes = {
+          resize = {
+            "Left" = "resize shrink width 5 px or 5 ppt";
+            "Down" = "resize grow height 5 px or 5 ppt";
+            "Up" = "resize shrink height 5 px or 5 ppt";
+            "Right" = "resize grow width 5 px or 5 ppt";
+
+            "ctrl+Left" = "resize shrink width 10 px or 10 ppt";
+            "ctrl+Down" = "resize grow height 10 px or 10 ppt";
+            "ctrl+Up" = "resize shrink height 10 px or 10 ppt";
+            "ctrl+Right" = "resize grow width 10 px or 10 ppt";
+
+            "shift+Left" = "resize shrink width 1 px or 1 ppt";
+            "shift+Down" = "resize grow height 1 px or 1 ppt";
+            "shift+Up" = "resize shrink height 1 px or 1 ppt";
+            "shift+Right" = "resize grow width 1 px or 1 ppt";
+
+            "Return" = "mode \"default\"";
+            "Escape" = "mode \"default\"";
+            "${mod}+r" = "mode \"default\"";
+          };
+        };
 
         keybindings = {
           "${mod}+space" = "exec ${pkgs.dmenu}/bin/dmenu_run";
@@ -30,6 +72,8 @@ in {
 
           "${mod}+shift+c" = "reload";
           "${mod}+shift+r" = "restart";
+
+          "${mod}+r" = "mode \"resize\"";
 
           # change focus with cursor keys:
           "${mod}+Left" = "focus left";
@@ -54,7 +98,7 @@ in {
           "${mod}+e" = "layout toggle split";
 
           # toggle tiling / floating
-          "${mod}+tab" = "floating toggle";
+          "${mod}+Tab" = "floating toggle";
 
           # focus the parent container
           "${mod}+a" = "focus parent";
@@ -85,6 +129,10 @@ in {
           "${mod}+shift+m" = "move container to workspace M";
           "${mod}+shift+0" = "move scratchpad";
         };
+        bars = [{ 
+	  position = "bottom";
+          trayOutput = "DVI-D-0";
+        }];
       };
       # extraConfig = lib.readFile ./i3.conf;
     };
