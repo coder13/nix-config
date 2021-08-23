@@ -128,9 +128,13 @@ in {
           "${mod}+shift+9" = "move container to workspace 9";
           "${mod}+shift+m" = "move container to workspace M";
           "${mod}+shift+0" = "move scratchpad";
+
+          "XF86AudioRaiseVolume" = "exec --no-startup-id paxmixer -increase 5";
+          "XF86AudioLowerVolume" = "exec --no-startup-id paxmixer -decrease 5";
+          "XF86AudioMute" = "exec --no-startup-id paxmixer --toggle-mute";
         };
         bars = [{ 
-	  position = "bottom";
+	        position = "bottom";
           trayOutput = "DVI-D-0";
         }];
       };

@@ -8,8 +8,12 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./ledger.nix
     ];
+  
+  nixpkgs.overlays = [
+    (import ./ledger.nix)
+  ];
+
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -83,14 +87,8 @@
   services = {
     xserver = {
       enable = true;
-
-      # displayManager = {
-      #   defaultSession = "none+i3";
-      #   lightdm = {
-      #     enable = true;
-      #   };
-      # };
       windowManager.i3.enable = true;
+      videoDrivers = [ "nvidia" ];
     };
     blueman.enable = true;
     pipewire = {
@@ -103,32 +101,38 @@
     };
     # Enable the OpenSSH daemon.
     openssh.enable = true;
+    udev.packages = with pkgs; [
+      ledger-udev-rules
+    ];
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
+
+  hardware.openrazer = {
+    enable = true;
+    keyStatistics = true;
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   nixpkgs.config.allowUnfree = true;
   environment = {
     systemPackages = with pkgs; [
+      # general utils
       vim
       wget
       git
-      (writeShellScriptBin "nixFlakes" ''
-        exec ${nixUnstable}/bin/nix --experimental-features "nix-command flakes" "$@"
-      '')
+
+      # audio
+      alsaUtils
+      pavucontrol
+      pamixer
     ];
     variables = {
       TERMINAL = "alacritty";
     };
   };
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
