@@ -89,6 +89,10 @@
       enable = true;
       windowManager.i3.enable = true;
       videoDrivers = [ "nvidia" ];
+      displayManager.sessionCommands = ''
+        ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
+        ${pkgs.xorg.xset} r rate 200 32
+      '';
     };
     blueman.enable = true;
     pipewire = {
@@ -104,6 +108,8 @@
     udev.packages = with pkgs; [
       ledger-udev-rules
     ];
+    mongodb.enable = true;
+    redis.enable = true;
   };
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
