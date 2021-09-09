@@ -11,7 +11,7 @@
     ];
 
   nixpkgs.overlays = [
-    (import ./ledger.nix)
+    (import ./modules/ledger)
   ];
 
 

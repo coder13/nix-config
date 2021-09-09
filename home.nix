@@ -51,28 +51,7 @@ in {
     enable = true;
   };
 
-  programs.git = {
-    enable = true;
-    userName = "Caleb";
-    userEmail = "choover11@gmail.com";
-    extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
-      core = {
-        editor = "vim";
-      };
-    };
-  };
-
-  programs.vim = import ./vim.nix { inherit lib pkgs; };
-  programs.rofi = import ./rofi.nix { inherit pkgs; };
-  programs.tmux = import ./tmux.nix { inherit lib pkgs; };
-
-  services.polybar = import ./polybar.nix;
-
   imports = [
-    ./i3.nix
-    ./zsh.nix
+    ./modules
   ];
 }

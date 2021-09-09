@@ -1,5 +1,5 @@
-{ pkgs } :
-let 
+{ pkgs, ... } :
+let
   base00 = "#1d1f21";
   base01 = "#282a2e";
   base02 = "#373b41";
@@ -17,11 +17,13 @@ let
   base0E = "#b294bb";
   base0F = "#a3685a";
 in {
-  enable = true;
-  borderWidth = 1;
-  lines = 15;
-  padding = 0;
-  terminal = "\${pkgs.alacritty}";
-  width = 1000;
-  # font = "Hack 12";
+  programs.rofi = {
+    enable = true;
+    borderWidth = 1;
+    lines = 15;
+    padding = 0;
+    terminal = "\${pkgs.alacritty}";
+    width = 1000;
+    # font = "Hack 12";
+  };
 }
