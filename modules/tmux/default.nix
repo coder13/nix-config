@@ -10,5 +10,6 @@
     shortcut = "a";
     terminal = "tmux-256color";
     extraConfig = lib.readFile ./tmux.conf;
+    shell = "${pkgs.zsh}/bin/zsh";
   };
 }

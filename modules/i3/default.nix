@@ -65,8 +65,8 @@ in {
         };
 
         keybindings = {
-          "${mod}+space" = "exec rofi -show combi -modi drun";
-          "${mod}+Return" = "exec alacritty";
+          "${mod}+space" = "exec ${pkgs.rofi}/bin/rofi -show combi -modi drun";
+          "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
 
           "${mod}+shift+q" = "kill";
 
@@ -96,6 +96,9 @@ in {
           # change container layout (stacked, tabbed, toggle split)
           "${mod}+w" = "layout tabbed";
           "${mod}+e" = "layout toggle split";
+
+          "${mod}+minus" = "split h";
+          "${mod}+bar" = "split v";
 
           # toggle tiling / floating
           "${mod}+Tab" = "floating toggle";

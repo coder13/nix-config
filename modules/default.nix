@@ -4,8 +4,8 @@
     ./rofi
     ./polybar
     ./vim
-    ./zsh
     ./tmux
+    ./zsh
     ./git
   ];
 }
