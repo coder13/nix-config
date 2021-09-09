@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  
+
   nixpkgs.overlays = [
     (import ./ledger.nix)
   ];
@@ -47,8 +47,8 @@
     # networking.wireless.userControlled.enable = true;
     # networking.wireless.userControlled.group = "wheel";
 
-    defaultGateway = "192.168.1.1";
-    nameservers = [ "8.8.8.8" ];
+    # defaultGateway = "192.168.1.1";
+    # nameservers = [ "8.8.8.8" ];
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -57,6 +57,7 @@
   interfaces = {
     enp39s0.useDHCP = true;
     wlp41s0.useDHCP = true;
+    tailscale0.useDHCP = true;
   };
 
   # Configure network proxy if necessary
@@ -71,6 +72,9 @@
   #};
   };
 
+  networking.firewall.allowedUDPPorts = [ 41641 ];
+  networking.firewall.enable = false;
+
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
@@ -84,6 +88,9 @@
 
   environment.pathsToLink = [ "/libexec" ];
 
+  # hardware.pulseaudio.enable = false;
+
+  security.rtkit.enable = true;
   services = {
     xserver = {
       enable = true;
@@ -110,6 +117,7 @@
     ];
     mongodb.enable = true;
     redis.enable = true;
+    tailscale.enable = true;
   };
 
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
@@ -132,14 +140,20 @@
       # audio
       alsaUtils
       pavucontrol
+      pulseaudio
       pamixer
+      helvum # GTK-based patchbay for pipewire
+
+      # vpn
+      tailscale
     ];
     variables = {
       TERMINAL = "alacritty";
+      TERM = "xterm-256color";
     };
   };
 
-  networking.firewall.enable = false;
+  programs.steam.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

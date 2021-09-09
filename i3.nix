@@ -65,7 +65,7 @@ in {
         };
 
         keybindings = {
-          "${mod}+space" = "exec ${pkgs.dmenu}/bin/dmenu_run";
+          "${mod}+space" = "exec rofi -show combi -modi drun";
           "${mod}+Return" = "exec alacritty";
 
           "${mod}+shift+q" = "kill";
@@ -133,8 +133,8 @@ in {
           "XF86AudioLowerVolume" = "exec --no-startup-id paxmixer -decrease 5";
           "XF86AudioMute" = "exec --no-startup-id paxmixer --toggle-mute";
         };
-        bars = [{ 
-	        position = "bottom";
+        bars = [{
+          position = "bottom";
           trayOutput = "DVI-D-0";
         }];
       };

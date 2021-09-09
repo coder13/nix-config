@@ -5,7 +5,7 @@ let
   my-python-packages = python-packages: with python-packages; [
     pandas
     requests
-  ]; 
+  ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
 in {
   home.packages = with pkgs; [
@@ -20,6 +20,12 @@ in {
     nodejs
     httpie
     python-with-my-packages
+    ncat
+    dnsutils
+    bat
+
+    ruby_3_0
+    jekyll
 
     # node:
     nodePackages.nodemon
@@ -35,7 +41,10 @@ in {
     discord-canary
     google-chrome
     ledger-live-desktop
+    element-desktop
     libreoffice
+    slack
+    thunderbird
   ];
 
   programs.home-manager = {
@@ -50,14 +59,20 @@ in {
       init = {
         defaultBranch = "main";
       };
+      core = {
+        editor = "vim";
+      };
     };
   };
 
   programs.vim = import ./vim.nix { inherit lib pkgs; };
-
+  programs.rofi = import ./rofi.nix { inherit pkgs; };
   programs.tmux = import ./tmux.nix { inherit lib pkgs; };
+
+  services.polybar = import ./polybar.nix;
 
   imports = [
     ./i3.nix
+    ./zsh.nix
   ];
 }
