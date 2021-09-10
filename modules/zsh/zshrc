@@ -1,0 +1,8 @@
+# [user@hostname:directory] git:(branch) *
+# directory trimming: %(5~|%-1~/…/%3~|%4~)
+#
+
+ZSH_COLORIZE_CHROMA_FORMATTER=terminal256
+ZSH_COLORIZE_STYLE="solarized-dark"
+
+PS1="[%{$fg[green]%}%n%{$reset_color%}@%{$fg[magenta]%}%m:%{$fg[cyan]%}%(5~|%-1~/.../%3~|%4~)] $(git_prompt_info)%{$reset_color%}"

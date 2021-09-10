@@ -7,5 +7,6 @@
     ./tmux
     ./zsh
     ./git
+    ./alacritty
   ];
 }
