@@ -53,5 +53,6 @@ in {
 
   imports = [
     ./modules
+    ./scripts
   ];
 }
