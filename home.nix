@@ -8,6 +8,8 @@ let
   ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
 in {
+  theme.selectedTheme = "solarized-dark";
+
   home.packages = with pkgs; [
     # terminal:
     feh
@@ -22,6 +24,9 @@ in {
     ncat
     dnsutils
     bat
+    miller
+
+    hack-font
 
     ruby_3_0
     jekyll
@@ -60,7 +65,7 @@ in {
   );
 
   imports = [
-    # ./themes
+    ./themes
     ./modules
     ./scripts
   ];

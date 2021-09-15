@@ -1,5 +1,4 @@
-{ lib, pkgs, ... }:
-
+{ config, lib, pkgs, ... }:
 let
   mod = "Mod4";
 in {
@@ -32,7 +31,7 @@ in {
         focus.followMouse = false;
 
         fonts = {
-          names = [ "monospace 8" ];
+          names = [ config.theme.font ];
           size = 8.0;
         };
 

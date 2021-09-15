@@ -20,7 +20,7 @@
       grogu = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/grogu/configuration.nix
+          ./hosts/grogu
           home-manager.nixosModules.home-manager
           hm
           {
@@ -33,7 +33,7 @@
       tantive = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/tantive/configuration.nix
+          ./hosts/tantive
           home-manager.nixosModules.home-manager
           hm
           {
