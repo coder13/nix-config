@@ -7,13 +7,12 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./hardware.nix
     ];
 
   nixpkgs.overlays = [
-    (import ./modules/ledger)
+    (import ../../modules/ledger)
   ];
-
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -42,53 +41,27 @@
 
     networkmanager.enable = true;
 
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    # The global useDHCP flag is deprecated, therefore explicitly set to false here.
+    # Per-interface useDHCP will be mandatory in the future, so this generated config
+    # replicates the default behaviour.
+    useDHCP = false;
+    interfaces = {
+      enp39s0.useDHCP = true;
+      wlp41s0.useDHCP = true;
+      tailscale0.useDHCP = true;
+    };
 
-    # networking.wireless.userControlled.enable = true;
-    # networking.wireless.userControlled.group = "wheel";
-
-    # defaultGateway = "192.168.1.1";
-    # nameservers = [ "8.8.8.8" ];
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  useDHCP = false;
-  interfaces = {
-    enp39s0.useDHCP = true;
-    wlp41s0.useDHCP = true;
-    tailscale0.useDHCP = true;
+    firewall = {
+      enable = false;
+      allowedUDPPorts = [ 41641 ];
+    };
   };
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  #networking.wireless.networks = {
-  #  "MyCharterWiFid7-5G" = {
-  #    #psk="breezyquail345"
-  #    pskRaw = "c63e0a99e670456907c25b1685aed89fa95743a6b42da5664136a6f3568750d0";
-  #  };
-  #};
-  };
-
-  networking.firewall.allowedUDPPorts = [ 41641 ];
-  networking.firewall.enable = false;
 
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-
   environment.pathsToLink = [ "/libexec" ];
-
-  # hardware.pulseaudio.enable = false;
 
   security.rtkit.enable = true;
   services = {
@@ -120,11 +93,12 @@
     tailscale.enable = true;
   };
 
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
-
-  hardware.openrazer = {
-    enable = true;
-    keyStatistics = true;
+  hardware = {
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
+    openrazer = {
+      enable = true;
+      keyStatistics = true;
+    };
   };
 
   # List packages installed in system profile. To search, run:

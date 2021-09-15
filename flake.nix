@@ -1,23 +1,45 @@
 {
-  description = "Caleb's personal nixos configuration";
+  description = "Caleb's personal nixos configurations";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
+    nixos-hardware.url = github:NixOS/nixos-hardware/master;
   };
 
-  outputs = { home-manager, nixpkgs, ... }: {
-    nixosConfigurations = {
+  outputs = { home-manager, nixpkgs, nixos-hardware, ... }: {
+    nixosConfigurations =
+    let
+      hm = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+      };
+    in
+    {
+      # custom built desktop with amd ryzen 7 3700 and Nvidia GeForce GT 730 
       grogu = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
+          ./hosts/grogu/configuration.nix
           home-manager.nixosModules.home-manager
+          hm
           {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
             home-manager.users.caleb = import ./home.nix;
           }
+        ];
+      };
+
+      # thinkpad-t495s laptop
+      tantive = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/tantive/configuration.nix
+          home-manager.nixosModules.home-manager
+          hm
+          {
+            home-manager.users.caleb = import ./home.nix;
+          }
+          nixos-hardware.nixosModules.lenovo-thinkpad-t495s
         ];
       };
     };
