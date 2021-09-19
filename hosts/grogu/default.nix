@@ -71,7 +71,7 @@
       videoDrivers = [ "nvidia" ];
       displayManager.sessionCommands = ''
         ${pkgs.xorg.xmodmap}/bin/xmodmap ~/.Xmodmap
-        ${pkgs.xorg.xset} r rate 200 32
+        ${pkgs.xorg.xset}/bin/xset r rate 200 32
       '';
     };
     blueman.enable = true;
@@ -137,6 +137,15 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.05"; # Did you read the comment?
 
-  home-manager.users.caleb.theme.selectedTheme = "solarized-dark";
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override {
+      fonts = [ "Hack" ];
+    })
+  ];
+
+  home-manager.users.caleb.theme = {
+    selectedTheme = "solarized-dark";
+    font = "Hack Nerd Font";
+  };
 }
 

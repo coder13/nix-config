@@ -8,6 +8,10 @@ let
   ];
   python-with-my-packages = pkgs.python3.withPackages my-python-packages;
 in {
+  programs.home-manager = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     # terminal:
     feh
@@ -23,6 +27,7 @@ in {
     dnsutils
     bat
     miller
+    powerline
 
     hack-font
 
@@ -49,22 +54,14 @@ in {
     thunderbird
   ];
 
-  programs.home-manager = {
-    enable = true;
-  };
-
-  xresources.extraConfig = builtins.readFile (
-    pkgs.fetchFromGitHub {
-        owner = "solarized";
-        repo = "xresources";
-        rev = "025ceddbddf55f2eb4ab40b05889148aab9699fc";
-        sha256 = "0lxv37gmh38y9d3l8nbnsm1mskcv10g3i83j0kac0a2qmypv1k9f";
-    } + "/Xresources.dark"
-  );
-
   imports = [
     ./themes
     ./modules
     ./scripts
   ];
+
+  xsession.initExtra = ''
+    ${pkgs.xorg.xmodmap}/bin/xmodmap /home/caleb/.Xmodmap
+    ${pkgs.xorg.xset}/bin/xset r rate 200 32;
+  '';
 }
