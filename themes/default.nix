@@ -32,6 +32,5 @@ with lib; {
 
   config = {
     theme.colors = themes.${config.theme.selectedTheme};
-    theme.font = "Hack";
   };
 }

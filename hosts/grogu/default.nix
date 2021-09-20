@@ -127,7 +127,10 @@
     };
   };
 
-  programs.steam.enable = true;
+  programs = {
+    steam.enable = true;
+    nm-applet.enable = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -145,7 +148,7 @@
 
   home-manager.users.caleb.theme = {
     selectedTheme = "solarized-dark";
-    font = "Hack Nerd Font";
+    font = "Hack";
   };
 }
 

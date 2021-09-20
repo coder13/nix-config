@@ -16,7 +16,6 @@ in {
     # terminal:
     feh
     rofi
-    flameshot
     neofetch
     hack-font
     R
@@ -28,8 +27,6 @@ in {
     bat
     miller
     powerline
-
-    hack-font
 
     ruby_3_0
     jekyll
@@ -45,14 +42,44 @@ in {
     spotify
     firefox
     audacity
-    discord-canary
+    discord
     google-chrome
     ledger-live-desktop
     element-desktop
     libreoffice
     slack
     thunderbird
+    betterdiscordctl
   ];
+
+  # TODO: get new GPU
+  # services.picom = {
+  #   enable = true;
+  #   blur = true;
+  #   inactiveDim = "0.3";
+
+  #   fade = true;
+  #   fadeDelta = 10;
+
+  #   opacityRule = [
+  #     "0:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
+  #     "94:class_g = 'Alacritty'"
+  #     "94:class_g = 'Blueman-manager'"
+  #     "94:class_g = 'discord'"
+  #     "94:class_g = 'Zathura'"
+  #   ];
+
+  #   vSync = false;
+
+  #   shadow = true;
+  #   shadowExclude = [
+  #     "window_type *= 'menu'"
+  #     "name ~= 'Firefox\$'"
+  #     "focused = 1"
+  #   ];
+  #   shadowOffsets = [ (-20) (-20) ];
+  #   experimentalBackends = true;
+  # };
 
   imports = [
     ./themes

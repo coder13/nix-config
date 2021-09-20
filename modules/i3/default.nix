@@ -55,8 +55,6 @@ in {
       fonts = fonts;
 
       startup = [{
-        command = "exec flameshot";
-      } {
         command = "exec picom";
       }];
 
@@ -138,7 +136,8 @@ in {
       }];
 
       keybindings = {
-        "${mod}+space" = "exec ${pkgs.rofi}/bin/rofi -show combi -modi drun";
+        "${mod}+k" = "exec ${pkgs.rofi}/bin/rofi -show combi -modi drun";
+        "${mod}+space" = "exec ${pkgs.rofi}/bin/rofi -show run -modi combi";
         "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
 
         "${mod}+shift+q" = "kill";

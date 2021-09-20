@@ -11,9 +11,8 @@
         normal.family = config.theme.font;
         bold.family = config.theme.font;
         italic.family = config.theme.font;
-        size = 10.0;
+        size = 11.0;
       };
     };
   };
 }
-
