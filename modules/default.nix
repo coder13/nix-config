@@ -8,5 +8,6 @@
     ./zsh
     ./git
     ./alacritty
+    ./dunst
   ];
 }

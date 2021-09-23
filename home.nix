@@ -27,6 +27,8 @@ in {
     bat
     miller
     powerline
+    unzip
+    gcc
 
     ruby_3_0
     jekyll
@@ -50,6 +52,9 @@ in {
     slack
     thunderbird
     betterdiscordctl
+    obsidian
+    anki
+    zoom-us
   ];
 
   # TODO: get new GPU

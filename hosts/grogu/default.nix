@@ -91,6 +91,7 @@
     mongodb.enable = true;
     redis.enable = true;
     tailscale.enable = true;
+    rsyncd.enable = true;
   };
 
   hardware = {
