@@ -30,7 +30,7 @@ filetype off
 
 " call vundle#end()
 set background=dark
-colorscheme solarized
+colorscheme default
 filetype plugin indent on
 
 """"""""

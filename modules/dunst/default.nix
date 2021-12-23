@@ -3,7 +3,7 @@
   services.dunst.enable = true;
   services.dunst.settings = {
     global = {
-      font = "Hack 12";
+      font = "Hack 11";
 
       # allow a small subset of html markup:
       # <b>bold</b>
@@ -23,7 +23,8 @@
       #   %I  iconname (without its path)
       #   %p  progress value if set ([  0%] to [100%]) or nothing
       # Markup is allowed
-      format = "%s\n%p %b "; #"<b>%a:</b> %s\n%b";
+      format = "<b>%a:</b> %s\n%b";
+      icon_position = "off";
 
       # Sort messages by urgency
       sort = "yes";
@@ -63,7 +64,7 @@
       # right side of the screen.  Y is measured from the top and down respectevly.
       # The width can be negative. In this case the actual width is the
       # screen width minus the width defined in within the geometry option.
-      geometry = "300x5-30+20";
+      geometry = "300x5-32+24";
 
       # The transparency of the window. range: [0; 100]
       # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)

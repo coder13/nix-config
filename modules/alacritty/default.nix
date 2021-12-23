@@ -13,6 +13,7 @@
         italic.family = config.theme.font;
         size = 11.0;
       };
+      live_config_reload = true;
     };
   };
 }

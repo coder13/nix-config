@@ -1,13 +1,14 @@
 {
   imports = [
-    ./i3
-    ./rofi
-    ./polybar
-    ./vim
-    ./tmux
-    ./zsh
-    ./git
     ./alacritty
     ./dunst
+    ./git
+    ./i3
+    #./polybar
+    ./rofi
+    ./tmux
+    ./vim
+    ./zathura
+    ./zsh
   ];
 }

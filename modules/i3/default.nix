@@ -204,9 +204,9 @@ in {
         "${mod}+shift+m" = "move container to workspace M";
         "${mod}+shift+0" = "move scratchpad";
 
-        "XF86AudioRaiseVolume" = "exec --no-startup-id paxmixer -increase 5";
-        "XF86AudioLowerVolume" = "exec --no-startup-id paxmixer -decrease 5";
-        "XF86AudioMute" = "exec --no-startup-id paxmixer --toggle-mute";
+        "XF86AudioRaiseVolume" = "exec --no-startup-id amixer set Master 2%+";
+        "XF86AudioLowerVolume" = "exec --no-startup-id amixer set Master 2%-";
+        "XF86AudioMute" = "exec --no-startup-id amixer set Master toggle";
       };
 
       bars = [{

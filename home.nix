@@ -29,32 +29,44 @@ in {
     powerline
     unzip
     gcc
+    docker-compose
+    cargo
+    #mtools
+    #dosfstools
+    jq
+    todoist
+    git-ignore
+    csvtool
 
     ruby_3_0
-    jekyll
+    #jekyll
 
     # node:
     nodePackages.nodemon
     nodePackages.http-server
+    nodePackages.eslint
 
     # graphical:
+    gparted
     vscode
     xfce.thunar
     tdesktop
     spotify
-    firefox
-    audacity
+    clementine
+    #firefox
+    #audacity
+    gimp
     discord
     google-chrome
-    ledger-live-desktop
-    element-desktop
-    libreoffice
-    slack
-    thunderbird
+    #ledger-live-desktop
+    #element-desktop
+    #libreoffice
+    #slack
+    #thunderbird
     betterdiscordctl
     obsidian
-    anki
-    zoom-us
+    #zoom-us
+    #wireshark
   ];
 
   # TODO: get new GPU

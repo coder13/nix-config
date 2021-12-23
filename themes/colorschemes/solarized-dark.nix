@@ -2,7 +2,7 @@
   # Default colors
   primary = {
     background = "#002b36"; # base03
-    foreground = "#839496"; # base0
+    foreground = "#93a1a1"; # base0
   };
 
   # Cursor colors
@@ -13,25 +13,25 @@
 
   # Normal colors
   normal = {
-    black =   "#073642"; # base02
+    black =   "#002b36"; # base02
     red =     "#dc322f"; # red
     green =   "#859900"; # green
     yellow =  "#b58900"; # yellow
     blue =    "#268bd2"; # blue
-    magenta = "#d33682"; # magenta
+    magenta = "#6c71c4"; # magenta
     cyan =    "#2aa198"; # cyan
-    white =   "#eee8d5"; # base2
+    white =   "#93a1a1"; # base2
   };
 
   # Bright colors
   bright = {
-    black =   "#002b36"; # base03
-    red =     "#cb4b16"; # orange
-    green =   "#586e75"; # base01
-    yellow =  "#657b83"; # base00
-    blue =    "#839496"; # base0
+    black =   "#657b83"; # base03
+    red =     "#dc322f"; # orange
+    green =   "#859900"; # base01
+    yellow =  "#b58900"; # base00
+    blue =    "#268bdc"; # base0
     magenta = "#6c71c4"; # violet
-    cyan =    "#93a1a1"; # base1
+    cyan =    "#2aa198"; # base1
     white =   "#fdf6e3"; # base3
   };
 }

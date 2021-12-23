@@ -10,9 +10,9 @@
       ./hardware.nix
     ];
 
-  nixpkgs.overlays = [
-    (import ../../modules/ledger)
-  ];
+  #nixpkgs.overlays = [
+  #  (import ../../modules/ledger)
+  #];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -33,7 +33,7 @@
   users.users.caleb = {
     isNormalUser = true;
     home = "/home/caleb";
-    extraGroups = [ "wheel" "plugdev" ];
+    extraGroups = [ "wheel" "plugdev" "docker" "adbusers" ];
   };
 
   networking = {
@@ -88,10 +88,19 @@
     udev.packages = with pkgs; [
       ledger-udev-rules
     ];
+    mysql.enable = true;
+    mysql.package = pkgs.mariadb;
     mongodb.enable = true;
     redis.enable = true;
     tailscale.enable = true;
     rsyncd.enable = true;
+    # Enable cron service
+    cron = {
+      enable = true;
+      systemCronJobs = [
+        "0 * 15 * * *      root    sh -c \"amixer set Master mute\" >> /home/caleb/amixer"
+      ];
+    };
   };
 
   hardware = {
@@ -112,26 +121,32 @@
       wget
       git
 
+      openjdk
+
       # audio
       alsaUtils
       pavucontrol
       pulseaudio
       pamixer
       helvum # GTK-based patchbay for pipewire
+      audio-recorder
 
       # vpn
       tailscale
     ];
     variables = {
       TERMINAL = "alacritty";
-      TERM = "xterm-256color";
+      TERM = "screen-256color";
     };
   };
 
   programs = {
+    adb.enable = true;
     steam.enable = true;
     nm-applet.enable = true;
   };
+
+  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
