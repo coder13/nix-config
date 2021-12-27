@@ -91,7 +91,7 @@
     mysql.enable = true;
     mysql.package = pkgs.mariadb;
     mongodb.enable = true;
-    redis.enable = true;
+    # redis.servers.enable = true;
     tailscale.enable = true;
     rsyncd.enable = true;
     # Enable cron service
@@ -163,7 +163,7 @@
   ];
 
   home-manager.users.caleb.theme = {
-    selectedTheme = "solarized-dark";
+    selectedTheme = "hybrid";
     font = "Hack";
   };
 }

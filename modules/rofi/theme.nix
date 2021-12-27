@@ -5,23 +5,22 @@ let
 
   background =                  theme.colors.primary.background;
   foreground =                  theme.colors.cursor.cursor;
-  border-color =                foreground;
   bordercolor =                 background;
   separatorcolor =              theme.colors.normal.black;
 
   normal-background =           background;
   normal-foreground =           foreground;
-  alternate-normal-background = background;
-  alternate-normal-foreground = foreground;
-  selected-normal-background =  theme.colors.normal.black;
-  selected-normal-foreground =  foreground;
+  alternate-normal-background = normal-background;
+  alternate-normal-foreground = normal-foreground;
+  selected-normal-background =  theme.colors.normal.yellow;
+  selected-normal-foreground =  theme.colors.normal.black;
 
   active-background =           background;
   active-foreground =           foreground;
-  alternate-active-background = background;
+  alternate-active-background = active-background;
   alternate-active-foreground = active-foreground;
-  selected-active-background =  theme.colors.normal.black;
-  selected-active-foreground =  foreground;
+  selected-active-background =  theme.colors.normal.yellow;
+  selected-active-foreground =  theme.colors.normal.black;
 
   urgent-background =           background;
   urgent-foreground =           theme.colors.bright.red;
@@ -32,7 +31,7 @@ let
 in {
   "*" = {
     border-color = mkLiteral foreground;
-    background-color = mkLiteral "#00000000";
+    background-color = mkLiteral background;
     text-color = mkLiteral foreground;
     red = theme.colors.normal.red;
     blue = theme.colors.normal.blue;
@@ -71,39 +70,39 @@ in {
   };
   "#element.normal.normal" = {
     background-color = mkLiteral normal-background;
-    text-color =       mkLiteral foreground;
+    text-color =       mkLiteral normal-foreground;
   };
   "#element.normal.urgent" = {
     background-color = mkLiteral urgent-background;
-    text-color =       mkLiteral foreground;
+    text-color =       mkLiteral urgent-foreground;
   };
   "#element.normal.active" = {
-    background-color = mkLiteral active-background;
-    text-color =       mkLiteral foreground;
+    background-color  = mkLiteral active-background;
+    text-color        = mkLiteral active-foreground;
   };
   "#element.selected.normal" = {
-    background-color = mkLiteral selected-normal-background;
-    text-color = mkLiteral foreground;
+    background-color  = mkLiteral selected-normal-background;
+    text-color        = mkLiteral selected-normal-foreground;
   };
   "#element.selected.urgent" = {
-    background-color = mkLiteral selected-urgent-background;
-    text-color = mkLiteral foreground;
+    background-color  = mkLiteral selected-urgent-background;
+    text-color        = mkLiteral selected-urgent-foreground;
   };
   "#element.selected.active" = {
-    background-color = mkLiteral selected-active-background;
-    text-color = mkLiteral foreground;
+    background-color  = mkLiteral selected-active-background;
+    text-color        = mkLiteral selected-active-foreground;
   };
   "#element.alternate.normal" = {
-    background-color = mkLiteral alternate-normal-background;
-    text-color = mkLiteral foreground;
+    background-color  = mkLiteral alternate-normal-background;
+    text-color        = mkLiteral alternate-normal-foreground;
   };
   "#element.alternate.urgent" = {
-    background-color = mkLiteral alternate-urgent-background;
-    text-color = mkLiteral foreground;
+    background-color  = mkLiteral alternate-urgent-background;
+    text-color        = mkLiteral alternate-normal-foreground;
   };
   "#element.alternate.active" = {
-    background-color = mkLiteral alternate-active-background;
-    text-color = mkLiteral foreground;
+    background-color  = mkLiteral alternate-active-background;
+    text-color        = mkLiteral alternate-active-foreground;
   };
   "#scrollbar" = {
     width =        mkLiteral "4px";
@@ -116,9 +115,9 @@ in {
     border =       mkLiteral "2px dash 0px 0px";
     border-color = mkLiteral separatorcolor;
   };
-  "#button.selected" = {
+  "#button selected" = {
     background-color = mkLiteral selected-normal-background;
-    text-color =       mkLiteral foreground;
+    text-color =       mkLiteral selected-normal-foreground;
   };
   "#inputbar" = {
     spacing =     0;
@@ -145,5 +144,9 @@ in {
     str =        ":";
     margin =     mkLiteral "0px 0.3em 0em 0em";
     text-color = mkLiteral foreground;
+  };
+  "#element-icon, element-index, element-text" = {
+    background-color = mkLiteral "inherit";
+    text-color = mkLiteral "inherit";
   };
 }

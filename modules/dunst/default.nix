@@ -141,7 +141,7 @@
       # xev might be helpful to find names for keys
 
       # close notification
-      close = "mod4+m";
+      close = "mod4+Grave";
 
       # close all notifications
       close_all = "mod4+shift+m";
@@ -156,20 +156,20 @@
     urgency_low = {
       # IMPORTANT: colors have to be defined in quotation marks.
       # Otherwise the '#' and following  would be interpreted as a comment.
-      background = config.theme.colors.normal.black;
-      foreground = config.theme.colors.normal.white;
+      background = config.theme.colors.primary.background;
+      foreground = config.theme.colors.bright.white;
       timeout = 10;
     };
 
     urgency_normal = {
-      background = config.theme.colors.bright.green;
-      foreground = config.theme.colors.normal.white;
+      background = config.theme.colors.primary.background;
+      foreground = config.theme.colors.bright.white;
       timeout = 10;
     };
 
     urgency_critical = {
-      background = config.theme.colors.normal.red;
-      foreground = config.theme.colors.normal.white;
+      background = config.theme.colors.primary.background;
+      foreground = config.theme.colors.normal.red;
       timeout = 0;
     };
 

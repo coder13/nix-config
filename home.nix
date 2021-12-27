@@ -15,10 +15,10 @@ in {
   home.packages = with pkgs; [
     # terminal:
     feh
-    rofi
+    # rofi
     neofetch
     hack-font
-    R
+    # R
     nodejs
     httpie
     python-with-my-packages

@@ -86,21 +86,22 @@ in {
       window = {
         hideEdgeBorders = "smart";
         commands = [{
-          command = "move container to workspace 2";
-          criteria = {class = "discord";};
-        } {
-          command = "move container to workspace 2";
-          criteria = {class = "Slack";};
-        } {
-          command = "move container to workspace M";
-          criteria = {class = "Rhythmbox";};
-        } {
-          command = "move container to workspace M";
-          criteria = {class = "Spotify";};
-        } {
           command = "border pixel 2";
           criteria = {class = "^.*";};
         }];
+      };
+
+      assigns = {
+        "2" = [
+          { class = "^discord$"; }
+          { class = "^Slack$"; }
+          { class = "^telegram-desktop$"; }
+        ];
+        "M" = [
+          { class = "Spotify"; }
+          { class = "Rhythmbox"; }
+          { class = "Clementine"; }
+        ];
       };
 
       workspaceOutputAssign = [{
@@ -136,8 +137,9 @@ in {
       }];
 
       keybindings = {
-        "${mod}+k" = "exec ${pkgs.rofi}/bin/rofi -show combi -modi drun";
         "${mod}+space" = "exec ${pkgs.rofi}/bin/rofi -show run -modi combi";
+        "${mod}+equal" = "exec ${pkgs.rofi}/bin/rofi -show calc -modi calc";
+        "${mod}+p" = "exec bash ~/projects/rofi-xrandr/rofi-xrandr.sh";
         "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
 
         "${mod}+shift+q" = "kill";

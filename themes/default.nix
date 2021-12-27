@@ -8,6 +8,7 @@ let
   themes = {
     solarized-light = import ./colorschemes/solarized-light.nix;
     solarized-dark = import ./colorschemes/solarized-dark.nix;
+    hybrid = import ./colorschemes/hybrid.nix;
   };
 in
 with lib; {
