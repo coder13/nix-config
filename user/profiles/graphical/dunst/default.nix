@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
-  services.dunst.enable = true;
-  services.dunst.settings = {
+  enable = true;
+  settings = {
     global = {
       font = "Hack 9";
 

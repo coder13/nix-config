@@ -5,6 +5,11 @@
   };
 
   config = lib.mkIf config.profiles.graphical.enable {
+    programs.alacritty = import ./alacritty { inherit config pkgs; };
+    programs.rofi = import ./rofi { inherit config pkgs; };
+    programs.zathura = import ./zathura { inherit config; };
+    services.dunst = import ./dunst { inherit config pkgs; };
+
     home.packages = with pkgs; [
       gparted
       vscode
@@ -57,12 +62,4 @@
       experimentalBackends = true;
     };
   };
-
-  imports = [
-    ./alacritty
-    ./dunst
-    # ./polybar
-    ./rofi
-    ./zathura
-  ];
 }
