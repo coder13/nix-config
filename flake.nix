@@ -11,8 +11,10 @@
     nixosConfigurations =
     let
       hm = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        # users.caleb = import ./user;
+        sharedModules = [ ./user ];
       };
     in
     {
@@ -22,26 +24,22 @@
         modules = [
           ./hosts/grogu
           home-manager.nixosModules.home-manager
-          hm
-          {
-            home-manager.users.caleb = import ./home.nix;
-          }
+          { home-manager = hm; }
+          ./system
         ];
       };
 
       # thinkpad-t495s laptop
-      tantive = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/tantive
-          home-manager.nixosModules.home-manager
-          hm
-          {
-            home-manager.users.caleb = import ./home.nix;
-          }
-          nixos-hardware.nixosModules.lenovo-thinkpad-t495s
-        ];
-      };
+      # tantive = nixpkgs.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #   modules = [
+      #     home-manager.nixosModules.home-manager
+      #     ./hosts/tantive
+      #     ./system
+      #     homeConfig
+      #     nixos-hardware.nixosModules.lenovo-thinkpad-t495s
+      #   ];
+      # };
     };
   };
 }
