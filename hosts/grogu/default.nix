@@ -42,13 +42,8 @@
     interfaces = {
       enp39s0.useDHCP = true;
       wlp41s0.useDHCP = true;
-      tailscale0.useDHCP = true;
     };
   };
-
-  environment.pathsToLink = [ "/libexec" ];
-
-  security.rtkit.enable = true;
 
   services.xserver = {
     windowManager.i3.enable = true;
@@ -65,4 +60,3 @@
 
   virtualisation.docker.enable = true;
 }
-

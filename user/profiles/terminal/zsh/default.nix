@@ -3,12 +3,12 @@
   enable = true;
   shellAliases = {
     nix-update = "sudo nixos-rebuild switch --flake /home/caleb/.config/nix/";
-    nix-dryrun = "sudo nixos-rebuild dry-run --flake /home/caleb/.config/nix/";
+    nix-dryrun = "nixos-rebuild dry-run --flake /home/caleb/.config/nix/";
   };
   history = {
     size = 10000;
     path = "${config.xdg.dataHome}/zsh/history";
-    share = "false";
+    share = false;
   };
   oh-my-zsh = {
     enable = true;

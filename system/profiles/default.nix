@@ -65,9 +65,12 @@
     # redis.servers.enable = true; # FIXME this changed in a new version of nixos
   };
 
-  security.sudo.extraConfig = ''
-    Defaults lecture = never
-  '';
+  security = {
+    rtkit.enable = true;
+    sudo.extraConfig = ''
+      Defaults lecture = never
+    '';
+  };
 
   # TODO Move elsewhere
   programs = {
