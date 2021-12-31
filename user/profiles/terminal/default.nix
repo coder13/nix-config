@@ -12,6 +12,14 @@
     programs.vim = import ./vim { inherit lib pkgs; };
     programs.zsh = import ./zsh { inherit config lib pkgs; };
 
+    programs.direnv = {
+      enable = true;
+      enableZshIntegration = true;
+      nix-direnv = {
+        enable = true;
+      };
+    };
+
     programs.fzf = {
       enable = true;
       enableZshIntegration = true;
