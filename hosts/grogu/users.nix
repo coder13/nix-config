@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+  # we'll keep this line for now...
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     caleb = {
@@ -8,16 +11,14 @@
       home = "/home/caleb";
       extraGroups = [ "wheel" "plugdev" "docker" "adbusers" "wireshark"];
     };
-
-    root = {
-      shell = pkgs.zsh;
-    };
   };
 
   home-manager.users = {
     caleb = {
       profiles = {
         desktop-environment.enable = true;
+        desktop-environment.i3.enable = true;
+        desktop-environment.bars.polybar.enable = true;
         terminal.enable = true;
         graphical.enable = true;
       };

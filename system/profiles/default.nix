@@ -11,7 +11,7 @@
   nix = {
     package = pkgs.nixUnstable;
     trustedUsers = [ "root" "@wheel" ];
-    extraOptions = "experimental-features = nix-command flakes ca-references";
+    extraOptions = "experimental-features = nix-command flakes"; # ca-references";
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -74,8 +74,8 @@
 
   # TODO Move elsewhere
   programs = {
-    adb.enable = true;
-    steam.enable = true;
+    # adb.enable = true;
+    # steam.enable = true;
     nm-applet.enable = true;
   };
 

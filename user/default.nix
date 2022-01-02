@@ -41,10 +41,7 @@ in {
     ruby_3_0
     #jekyll
 
-    # node:
-    nodePackages.nodemon
-    nodePackages.http-server
-    nodePackages.eslint
+    notify-desktop
   ];
 
 

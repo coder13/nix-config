@@ -17,49 +17,23 @@
       tdesktop
       spotify
       clementine
-      #firefox
-      #audacity
-      gimp
+      # firefox
+      # audacity
+      # gimp
       discord
       google-chrome
-      #ledger-live-desktop
-      #element-desktop
-      libreoffice
-      #slack
-      #thunderbird
-      betterdiscordctl
+      # ledger-live-desktop
+      # element-desktop
+      # libreoffice
+      # slack
+      # thunderbird
+      # betterdiscordctl
       obsidian
-      #zoom-us
-      #wireshark
+      # zoom-us
+      # wireshark
     ];
 
     # TODO: get new GPU
-    services.picom = {
-      enable = true;
-      blur = true;
-      inactiveDim = "0.3";
-
-      fade = true;
-      fadeDelta = 5;
-
-      opacityRule = [
-        "0:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
-        "94:class_g = 'Alacritty'"
-        "94:class_g = 'Blueman-manager'"
-        "94:class_g = 'discord'"
-        "94:class_g = 'Zathura'"
-      ];
-
-      vSync = false;
-
-      shadow = true;
-      shadowExclude = [
-        "window_type *= 'menu'"
-        "name ~= 'Firefox\$'"
-        "focused = 1"
-      ];
-      shadowOffsets = [ (-20) (-20) ];
-      experimentalBackends = true;
-    };
+    # services.picom = import ./picom.nix;
   };
 }

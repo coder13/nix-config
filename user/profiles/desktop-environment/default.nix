@@ -12,8 +12,6 @@ in
 
     xsession = {
       enable = true;
-
-      windowManager.i3 = i3;
     };
 
     xsession.initExtra = ''
@@ -21,4 +19,9 @@ in
       ${pkgs.xorg.xset}/bin/xset r rate 200 32;
     '';
   };
+
+  imports = [
+    ./bars/polybar
+    ./i3
+  ];
 }

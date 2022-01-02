@@ -4,5 +4,5 @@ let
   rofi-tmux = pkgs.writeScriptBin "rofi-tmux" (import ./rofi-tmux.nix { inherit pkgs; });
 in
 {
-  home.packages = with pkgs; [ bc calc rofi-tmux ];
+  # home.packages = with pkgs; [ bc calc rofi-tmux ];
 }
