@@ -15,8 +15,8 @@ in
     completion-highlight-bg = colors.normal.green;
     completion-highlight-fg = colors.normal.black;
 
-    inputbar-group-bg = colors.normal.black;
-    inputbar-group-fg = colors.primary.foreground;
+#    inputbar-group-bg = colors.normal.black;
+#    inputbar-group-fg = colors.primary.foreground;
 
     index-bg = colors.primary.background;
     index-fg = colors.primary.foreground;

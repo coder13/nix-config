@@ -1,10 +1,13 @@
 {
-  enable = true;
-  blur = true;
-  inactiveDim = "0.3";
+  enable = false;
+  blur = false;
+  inactiveDim = "0.00";
 
-  fade = true;
-  fadeDelta = 5;
+  # Fade rules:
+  fade = false;
+  fadeDelta = 0;
+  fadeSteps = [ "1" "1" ];
+  # End Fade Rules
 
   opacityRule = [
     "0:_NET_WM_STATE@:32a *= '_NET_WM_STATE_HIDDEN'"
@@ -14,14 +17,19 @@
     "94:class_g = 'Zathura'"
   ];
 
-  vSync = false;
+  vSync = true;
 
-  shadow = true;
+  shadow = false;
   shadowExclude = [
     "window_type *= 'menu'"
     "name ~= 'Firefox\$'"
     "focused = 1"
   ];
-  shadowOffsets = [ (-20) (-20) ];
+  shadowOffsets = [ (0) (-5) ];
+  shadowOpacity = "0.2";
   experimentalBackends = true;
-};
+
+  extraOptions = ''
+  mark-ovredir-focused = true
+  '';
+}

@@ -31,7 +31,7 @@ in
 
           background = colors.primary.background;
           foreground = colors.primary.foreground;
-          bottom = true;
+          bottom = false;
 
           # wm-restack = "i3"; # for the tray
           separator = " | ";
@@ -111,7 +111,7 @@ in
         "module/tailscale" = {
           "inherit" = "module/network";
           interface = "tailscale0";
-          label-connected = "%{F${colors.normal.cyan}}Tailescale%{F-} %local_ip%";
+          label-connected = "%{F${colors.normal.cyan}}Tailscale%{F-} %local_ip%";
           label-padding = 1;
         };
         "module/i3" = import ./i3.nix { inherit colors; };

@@ -4,10 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
-    nixos-hardware.url = github:NixOS/nixos-hardware/master;
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    hosts.url = "github:StevenBlack/hosts";
   };
 
-  outputs = { home-manager, nixpkgs, nixos-hardware, ... }:
+  outputs = { home-manager, nixpkgs, nixos-hardware, hosts, ... }:
     let
       hm = {
         useGlobalPkgs = true;
@@ -25,6 +26,7 @@
           home-manager.nixosModules.home-manager
           { home-manager = hm; }
           ./system
+          hosts.nixosModule
         ];
       };
 
@@ -37,6 +39,7 @@
           { home-manager = hm; }
           ./system
           nixos-hardware.nixosModules.lenovo-thinkpad-t495s
+          hosts.nixosModule
         ];
       };
     };

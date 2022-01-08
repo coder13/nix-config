@@ -36,6 +36,11 @@
     grub.useOSProber = true;
   };
 
+  # There is currently a bug in the nixos code and I may be missing a systems/ profile directory
+  # boot.loader.grub.enable = true;
+  # boot.loader.grub.efiSupport = true;
+  # boot.loader.grub.device = "nodev";
+
   networking = {
     hostName = "grogu";
 

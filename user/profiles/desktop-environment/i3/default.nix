@@ -17,6 +17,7 @@ let
   locker = pkgs.writeScriptBin "lock" (builtins.readFile ./lock.sh);
   i3exit = import ./i3exit.nix { inherit pkgs locker; };
   lockerMode = "System: (l) lock, (e) logout, (s) switch-user | shift: (s)uspend, (h)ibernate, (r)eboot";
+  todoistMode = "Todoist (L) list, (A) add, (M) manage";
 in {
   options.profiles.desktop-environment.i3 = {
     enable = lib.mkEnableOption "Enables i3 as the window manager";
@@ -114,7 +115,15 @@ in {
 
             "Return" = "mode \"default\"";
             "Escape" = "mode \"default\"";
-            "${mod}+l" = "mode \"default\""; 
+            "${mod}+l" = "mode \"default\"";
+          };
+          "${todoistMode}" = {
+            "l" = "exec bash ~/bash/todoist_rofi.sh list";
+            "a" = "exec bash ~/bash/todoist_rofi.sh add";
+
+            "Return" = "mode \"default\"";
+            "Escape" = "mode \"default\"";
+            "${mod}+q" = "mode \"default\"";
           };
         };
 

@@ -33,6 +33,9 @@ set background=dark
 colorscheme default
 filetype plugin indent on
 
+execute "set t_8f=\e[38;2;%lu;%lu;%lum"
+execute "set t_8b=\e[48;2;%lu;%lu;%lum"
+
 """"""""
 if has('autocmd')
   filetype plugin indent on
@@ -109,12 +112,14 @@ inoremap <C-c> <Esc>
 
 set completeopt=menuone,longest,preview
 
+let mapleader = ','
+
 "
 " Plugins config
 "
 
 " NERDTree
-nnoremap <S-n> :NERDTreeToggle<CR>
+nnoremap <leader> b :NERDTreeToggle<CR>
 
 " CtrlP
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
@@ -129,6 +134,7 @@ let g:did_UltiSnips_vim_after = 1
 " vim-airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_section_z = ''
 
 "
 " Basic shortcuts definitions
@@ -150,13 +156,14 @@ vmap <C-w> S
 vmap <C-x> d
 vmap <C-v> p
 vmap <C-c> y
-" Undo, Redo (broken)
+" Undo, Redo
 nnoremap <C-z>  :undo<CR>
-inoremap <C-z>  <Esc>:undo<CR>
+inoremap <C-z>  <Esc>:undo<CR>2
 nnoremap <C-y>  :redo<CR>
 inoremap <C-y>  <Esc>:redo<CR>
 " Tabs
-let g:airline_theme='solarized'
+
+let g:airline_theme='simple'
 let g:airline#extensions#tabline#enabled = 1
 nnoremap <C-b>  :tabprevious<CR>
 inoremap <C-b>  <Esc>:tabprevious<CR>i
@@ -170,7 +177,6 @@ inoremap <C-k>  <Esc>:tabclose<CR>i
 " lazy ':'
 map \ :
 
-let mapleader = ','
 nnoremap <Leader>p :set paste<CR>
 nnoremap <Leader>o :set nopaste<CR>
 noremap  <Leader>g :GitGutterToggle<CR>

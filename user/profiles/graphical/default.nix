@@ -19,21 +19,21 @@
       clementine
       # firefox
       # audacity
-      # gimp
+      gimp
       discord
       google-chrome
       # ledger-live-desktop
       # element-desktop
-      # libreoffice
+      libreoffice
       # slack
       # thunderbird
       # betterdiscordctl
       obsidian
-      # zoom-us
+      zoom-us
       # wireshark
     ];
 
     # TODO: get new GPU
-    # services.picom = import ./picom.nix;
+    services.picom = import ./picom.nix;
   };
 }

@@ -15,5 +15,6 @@
     ./desktop-environment
     ./graphical
     ./terminal
+    ./development
   ];
 }
