@@ -14,8 +14,9 @@ let
   };
 
   rofi-tmux = import ../../../../scripts/rofi-tmux.nix { inherit pkgs; };
-  locker = pkgs.writeScriptBin "lock" (builtins.readFile ./lock.sh);
-  i3exit = import ./i3exit.nix { inherit pkgs locker; };
+  # locker = pkgs.writeScriptBin "lock" (builtins.readFile ./lock.sh);
+  locker = import ./locker.nix { inherit pkgs; };
+  i3exit = import ./i3exit.nix { inherit pkgs; };
   lockerMode = "System: (l) lock, (e) logout, (s) switch-user | shift: (s)uspend, (h)ibernate, (r)eboot";
   todoistMode = "Todoist (L) list, (A) add, (M) manage";
 in {
@@ -194,6 +195,7 @@ in {
 
           "${mod}+r" = "mode \"resize\"";
           "${mod}+l" = "mode \"${lockerMode}\"";
+          "${mod}+q" = "mode \"${todoistMode}\"";
 
           "${mod}+grave" = "exec --no-startup-id dunstctl history-pop";
 

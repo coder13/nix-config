@@ -7,12 +7,14 @@ export EDITOR=vim;
 ZSH_COLORIZE_CHROMA_FORMATTER=terminal256
 ZSH_COLORIZE_STYLE="solarized-dark"
 
-statcolors=("$fg[green]bob" "$fg[red]foo")
+statcolors=('$fg[green]bob' '$fg[red]foo')
+
+setopt promptsubst
 
 _R="%{$reset_color%}"
-PS1_USER="%{$fg[green]%}%n$_R" # Prints the username in green
-PS1_HOST="%{$fg[magenta]%}%m$_R" # Prints the host name in magenta
-PS1_CWD="%{$fg[cyan]%}%(5~|%-1~/.../%3~|%4~)$_R" # prints the current working directory
+PS1_USER='%{$fg[green]%}%n$_R' # Prints the username in green
+PS1_HOST='%{$fg[magenta]%}%m$_R' # Prints the host name in magenta
+PS1_CWD='%{$fg[cyan]%}%(5~|%-1~/.../%3~|%4~)$_R' # prints the current working directory
 PS1="%(?..%{$fg[red]%})[$PS1_USER@$PS1_HOST:$PS1_CWD%(?..%{$fg[red]%})] $(git_prompt_info)$_R$ "
 
 unsetopt inc_append_history

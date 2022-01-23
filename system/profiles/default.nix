@@ -28,6 +28,8 @@
       alsaUtils
       pavucontrol
       pamixer
+
+      psmisc
     ];
     variables = {
       TERMINAL = "alacritty";     # TODO Remove?
@@ -59,9 +61,9 @@
       enable = true;
       package = pkgs.mariadb;
     };
-    mongodb = {
-      enable = true;
-    };
+    # mongodb = {
+    #   enable = true;
+    # };
     # redis.servers.enable = true; # FIXME this changed in a new version of nixos
   };
 

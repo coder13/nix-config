@@ -1,6 +1,7 @@
-{ pkgs, locker, ... }:
+{ pkgs }:
 let
-  lock = "$${locker}/bin/lock";
+  locker = import ./locker.nix { inherit pkgs; };
+  lock = "${locker}/bin/lock";
   systemctl = "${pkgs.systemd}/bin/systemctl";
 in
   pkgs.writeShellScript "i3exit" ''

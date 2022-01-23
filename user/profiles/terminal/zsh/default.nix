@@ -12,7 +12,7 @@
   };
   oh-my-zsh = {
     enable = true;
-    plugins = [ "git" "thefuck" "node" "npm" "gem" "cp" "colorize" ];
+    plugins = [ "git" "tmux" "thefuck" "node" "npm" "gem" "cp" "colorize" "fzf" "httpie" ];
     theme = "robbyrussell";
   };
   plugins = [

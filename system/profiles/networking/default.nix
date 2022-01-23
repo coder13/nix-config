@@ -34,7 +34,7 @@ in
       #     sha256 = "a6c865abcecd8ab5be414ff88acdc5f4e75db56a35096adcf860d0d8ce791fa7";
       #   })
       # ];
-      stevenBlackHosts.enable = true;
+      stevenBlackHosts.enable = false;
     };
 
     services = {

@@ -7,7 +7,7 @@ in {
   };
 
   config = lib.mkIf config.profiles.display-server.enable {
-    # environment.systemPackages = with pkgs; [ xorg.xmodmap ];
+    environment.systemPackages = with pkgs; [ xorg.xmodmap ];
     services.xserver = {
       enable = true;
 
